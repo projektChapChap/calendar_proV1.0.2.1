@@ -6,9 +6,9 @@ class MyCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
+      width: 380,
       height: 150,
-      padding: new EdgeInsets.fromLTRB(6.00, 7.00, 0.00, 6.00),
+      padding: new EdgeInsets.fromLTRB(20.00, 2.00, 10.00, 6.00),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),

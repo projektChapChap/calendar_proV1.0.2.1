@@ -1,21 +1,27 @@
 import 'package:calendar_pro/Body.dart';
+import 'package:calendar_pro/DayDetails/ImageOfDay.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'DateRange.dart';
 import 'DayDetails/Details.dart';
+import 'Matches/football.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key, required this.title}) : super(key: key);
+class HomePage extends StatefulWidget {
+  // final String title;
+  // HomePage({Key? key, required this.title}) : super(key: key);
 
-  final String title;
-  var activePage = Today();
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var activePage;
   bool buttonClicked = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text("Calendar Pro"),
         backgroundColor: Color.fromRGBO(128, 128, 128, 9.1),
       ),
       body: (buttonClicked) ? activePage : Today(),
@@ -34,23 +40,45 @@ class HomePage extends StatelessWidget {
         onTap: (int i) => {
           if (i == 0)
             {
-              buttonClicked = true,
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => DateRangeSelector()),
-              )
+              setState(() {
+                buttonClicked = true;
+                activePage = DateRangeSelector();
+              })
+
+              // buttonClicked = true,
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => DateRangeSelector()),
+              // )
             }
           else if (i == 1)
-            {}
+            {
+              print(i),
+              setState(() {
+                buttonClicked = true;
+                activePage = FootballMatches();
+              })
+            }
+          else if (i == 2)
+            {
+              setState(() {
+                buttonClicked = false;
+                activePage = DayDetails();
+              })
+            }
           else if (i == 3)
             {}
           else if (i == 4)
             {
               buttonClicked = true,
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => DayDetails()),
-              )
+
+              setState(() {
+                activePage = DayDetails();
+              })
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => DayDetails()),
+              // )
             }
           else
             {}
