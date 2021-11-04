@@ -1,11 +1,11 @@
 import 'package:calendar_pro/Body.dart';
 import 'package:calendar_pro/DayDetails/ImageOfDay.dart';
+import 'package:calendar_pro/allevents/allevents.dart';
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'DateRange.dart';
 import 'DayDetails/Details.dart';
 import 'Matches/football.dart';
-
 class HomePage extends StatefulWidget {
   // final String title;
   // HomePage({Key? key, required this.title}) : super(key: key);
@@ -67,7 +67,12 @@ class _HomePageState extends State<HomePage> {
               })
             }
           else if (i == 3)
-            {}
+            {
+              buttonClicked = true,
+              setState(() {
+                activePage = AllEvents();
+              })
+            }
           else if (i == 4)
             {
               buttonClicked = true,
